@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -21,6 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'status',
+        'is_banned'
     ];
 
     /**
@@ -44,5 +49,55 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function adminDetail(): HasOne
+    {
+        return $this->hasOne(AdminDetail::class);
+    }
+
+    public function schoolDetail(): HasOne
+    {
+        return $this->hasOne(SchoolDetail::class);
+    }
+
+    public function teacherDetail(): HasOne
+    {
+        return $this->hasOne(TeacherDetail::class);
+    }
+
+    public function studentDetail(): HasOne
+    {
+        return $this->hasOne(StudentDetail::class);
+    }
+
+    public function students(): HasMany
+    {
+        return $this->hasMany(StudentDetail::class, 'school_id');
+    }
+
+    public function enrollments(): HasMany
+    {
+        return $this->hasMany(CourseEnrollment::class);
+    }
+
+    public function teacherEnrollments(): HasMany
+    {
+        return $this->hasMany(CourseEnrollment::class, 'teacher_id');
+    }
+
+    public function certificates(): HasMany
+    {
+        return $this->hasMany(Certificate::class);
+    }
+
+    public function courseProgress(): HasMany
+    {
+        return $this->hasMany(CourseProgress::class);
+    }
+
+    public function viewContents(): HasMany
+    {
+        return $this->hasMany(ViewContent::class);
     }
 }
