@@ -69,7 +69,7 @@ class TeacherUserSeeder extends Seeder
                 'name' => $teacherData['name'],
                 'email' => $teacherData['email'],
                 'password' => Hash::make('password123'),
-                'role' => 'teacher',
+                'role' => 'Teacher',
                 'status' => 'active',
                 'is_banned' => false,
             ]);

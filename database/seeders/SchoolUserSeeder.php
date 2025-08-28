@@ -52,7 +52,7 @@ class SchoolUserSeeder extends Seeder
                 'name' => $schoolData['name'],
                 'email' => $schoolData['email'],
                 'password' => Hash::make('password123'),
-                'role' => 'school',
+                'role' => 'School',
                 'status' => 'active',
                 'is_banned' => false,
             ]);

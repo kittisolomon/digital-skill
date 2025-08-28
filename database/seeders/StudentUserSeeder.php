@@ -96,7 +96,7 @@ class StudentUserSeeder extends Seeder
                 'name' => $studentData['name'],
                 'email' => $studentData['email'],
                 'password' => Hash::make('password123'),
-                'role' => 'student',
+                'role' => 'Student',
                 'status' => 'active',
                 'is_banned' => false,
             ]);
