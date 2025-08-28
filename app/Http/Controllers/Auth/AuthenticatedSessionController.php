@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Devrabiul\LaravelToasterMagic\ToastMagic;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -24,11 +25,28 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        try {
+            $request->authenticate();
+            $request->session()->regenerate();
 
-        $request->session()->regenerate();
+            $user = auth()->user();
+            $redirect = match ($user->userRole) {
+                'Superadmin' => route('superadmin.dashboard'),
+                'School' => route('school.dashboard'),
+                'Teacher' => route('teacher.dashboard'),
+                'Student' => route('student.dashboard'),
+                default => '/dashboard',
+            };
 
-        return redirect()->intended(route('dashboard', absolute: false));
+            ToastMagic::success('Success!', 'Login Successful!');
+
+            return redirect()->intended($redirect);
+
+        } catch (\Exception $e) {
+           
+            ToastMagic::error('Error!', 'Invalid credentials! Please try again.');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -41,6 +59,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        ToastMagic::info('Success!', 'Logout successful!');
 
         return redirect('/');
     }

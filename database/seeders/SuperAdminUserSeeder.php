@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\AdminDetail;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class SuperAdminUserSeeder extends Seeder
 {
@@ -15,30 +16,27 @@ class SuperAdminUserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create the Super Admin user
-        $user = User::create(
-            [
-                'name' => 'Super Admin',
-                'email' => 'superadmin@example.com',
-                'password' => Hash::make('password123'), 
-                'role' => 'Superadmin',
-            ]
-        );
+        $user = User::create([
+            'name' => 'Super Admin',
+            'email' => 'superadmin@example.com',
+            'password' => Hash::make('password123'), 
+            'role' => 'Superadmin',
+            'status' => 'active',
+            'is_banned' => false,
+        ]);
 
-        // Create Admin Details
-        AdminDetail::create(
-            [
-                'user_id' => $user->id,
-                'phone' => '08012345678',
-                'about' => 'This is the Super Admin of the system.',
-                'gender' => 'male',
-                'company' => 'Admin Corp',
-                'state' => 'Lagos',
-                'lga' => 'Ikeja',
-                'address' => '123 Admin Street, Lagos',
-                'photo_link' => null,
-                'status' => 'active',
-            ]
-        );
+        $user->assignRole('Superadmin');
+
+        AdminDetail::create([
+            'user_id' => $user->id,
+            'phone' => '08012345678',
+            'about' => 'This is the Super Admin of the system.',
+            'gender' => 'male',
+            'company' => 'Benue Digital Skill Initiative',
+            'state' => 'Benue',
+            'lga' => 'Makurdi',
+            'address' => '1 Government House, Makurdi, Benue State',
+            'photo_link' => null,
+        ]);
     }
 }

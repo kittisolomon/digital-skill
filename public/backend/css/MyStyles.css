@@ -1,0 +1,115 @@
+body {
+ scrollbar-base-color:#000099;
+-moz-scrollbarbase-color:#000099;
+-webkit-scrollbarbase-color:#000099;
+-o-scrollbarbase-color:#000099;
+ 
+scrollbar-face-color:#999900;
+-moz-scrollbar-face-color:#999900;
+-webkit-scrollbar-face-color:#999900;
+-o-scrollbar-face-color:#999900;
+ 
+scrollbar-arrow-color:white;
+-moz-scrollbar-arrow-color:white;
+-webkit-scrollbar-arrow-color:white;
+-o-scrollbar-arrow-color:white;
+ 
+scrollbar-shadow-color:#000000;
+-moz-scrollbar-shadow-color:#000000;
+-webkit-scrollbar-shadow-color:#000000;
+-o-scrollbar-shadow-color:#000000;
+ 
+scrollbar-track-color:#269CD4;
+-moz-scrollbar-track-color:#269CD4;
+-webkit-scrollbar-track-color:#269CD4;
+-o-scrollbar-track-color:#269CD4;
+ 
+scrollbar-highlight-color:white;
+-moz-scrollbar-highlight-color:white;
+-webkit-scrollbar-highlight-color:white;
+-o-scrollbar-highlight-color:white;
+ 
+scrollbar-darkshadow-Color:#996633;
+-moz-scrollbar-darkshadow-Color:#996633;
+-webkit-scrollbar-darkshadow-Color:#996633;
+-o-scrollbar-darkshadow-Color:#996633;
+}
+
+
+.pro_logo {text-align:center !important;}
+
+/* -- ====================================================== -- */
+/* CONTROLLING MEDIA SCREEN SIZES */
+
+/* -- EPHRAIM TARFA ADDED THESE BELOW-- */
+
+@media only screen and (min-width:1024px)
+{
+/* for bigger screens with width begining from 104px */
+ 
+}
+
+
+@media only screen and (min-width:640px) and (max-width:1024px) 
+{
+/* WORKING WELL ON IE EDGE AND FIREFOX */
+/* For tablet phones with minimum width size begining from 640px */
+.login-text { font-size:15px !important; }
+div div.welcome-text { font-size:23px !important; }
+.pro_logo { width:20% !important; }
+.login_error_divs { width:90% !important; font-size:12px !important; height:auto !important;}
+
+}
+
+
+@media only screen and (min-width:240px) and (max-width:639px) 
+{
+/* WORKING WELL ON IE EDGE AND FIREFOX */
+/* For big phones with minimum width begining from 240px. This seems to work on smallest-size phones too */
+.login-text { font-size:11px !important; }
+div div.welcome-text { font-size:18px !important; }
+.pro_logo { width:40% !important; }
+.login_error_divs { width:90% !important; font-size:10px !important; height:auto !important;}
+}
+
+
+
+@media screen and (max-width:639px) 
+{
+
+}
+
+@media screen and (max-width:600px) 
+{
+
+}
+
+
+
+@media screen and (max-width: 860px)
+{
+
+}
+
+/* Project Styles */
+.p-primary {
+    color:#012970;
+}
+
+.bg-p-primary {
+    background-color: #012970;
+}
+
+.light-success-bg{
+    background-color: #e0f8e9;
+}
+
+.transition-hover {
+    transition: transform 0.3s ease-in-out;
+}
+
+.transition-hover:hover {
+    transform: translateY(-10px);
+}
+
+

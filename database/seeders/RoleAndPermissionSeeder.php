@@ -31,6 +31,7 @@ class RoleAndPermissionSeeder extends Seeder
             'edit course',
             'delete course',
             'view course',
+            'view courses',
             'enroll course',
             'view own courses',
             'track course progress',
@@ -60,10 +61,12 @@ class RoleAndPermissionSeeder extends Seeder
             'create assessment',
             'edit assessment',
             'delete assessment',
+            'view assessment',
             'attempt assessment',
             'grade assessment',
             'issue certificate',
             'verify certificate',
+            'view certificates',
             'view own certificates',
 
             // Reports & Monitoring
@@ -130,7 +133,7 @@ class RoleAndPermissionSeeder extends Seeder
         $teacherRole = Role::findByName('Teacher');
         $teacherPermissions = [
             'create course',
-            'edit  course',
+            'edit course',
             'delete course',
             'view course',
             'view courses',

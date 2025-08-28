@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();
+            $table->string('lga')->nullable();
             $table->string('address')->nullable();
             $table->string('company')->nullable();
             $table->string('job')->nullable();

@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -99,5 +100,25 @@ class User extends Authenticatable
     public function viewContents(): HasMany
     {
         return $this->hasMany(ViewContent::class);
+    }
+
+    public function assignedDevice(): HasOne
+    {
+        return $this->hasOne(Device::class);
+    }
+
+    public function deviceAssignedBy(): HasOne
+    {
+        return $this->hasOne(Device::class, 'assigned_by');
+    }
+
+    public function deviceUsageLogs(): HasMany
+    {
+        return $this->hasMany(DeviceUsageLog::class);
+    }
+
+    public function reportedSupportLogs(): HasMany
+    {
+        return $this->hasMany(DeviceSupportLog::class, 'reported_by');
     }
 }
